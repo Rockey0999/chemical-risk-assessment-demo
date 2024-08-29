@@ -70,4 +70,44 @@ document.addEventListener('DOMContentLoaded', () => {
         const comparison = Math.abs(qsarRisk - customRisk).toFixed(6);
         document.getElementById('comparison').textContent = `Comparison (Absolute Difference): ${comparison}`;
     };
+    // Update Chart
+    updateChart(chemical, customRiskLevel, QSAR_Risk_Level);
+}
+
+function updateChart(chemical, customRiskLevel, qsarRiskLevel) {
+    const ctx = document.getElementById('riskComparisonChart').getContext('2d');
+    
+    // Chart data
+    const chartData = {
+        labels: [chemical, 'QSAR Model'],
+        datasets: [{
+            label: 'Risk Levels',
+            data: [customRiskLevel, qsarRiskLevel],
+            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'],
+            borderWidth: 1
+        }]
+    };
+    
+    // Chart configuration
+    const chartConfig = {
+        type: 'bar',
+        data: chartData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+    
+    // Create or update chart
+    if (window.riskComparisonChart) {
+        window.riskComparisonChart.data = chartData;
+        window.riskComparisonChart.update();
+    } else {
+        window.riskComparisonChart = new Chart(ctx, chartConfig);
+    }
+    
 });
