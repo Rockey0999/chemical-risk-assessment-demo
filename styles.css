@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: url('background-image.jpg') no-repeat center center fixed;
     background-size: cover;
     margin: 0;
@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: rgba(40, 44, 52, 0.8); /* Semi-transparent background */
+    background-color: rgba(40, 44, 52, 0.8);
     color: white;
     padding: 1rem;
     text-align: center;
@@ -27,7 +27,7 @@ main {
     padding: 1rem;
     max-width: 1200px;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -58,10 +58,12 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 h3 {
@@ -73,6 +75,11 @@ h3 {
     border: 1px solid #ccc;
     padding: 1rem;
     border-radius: 4px;
+    transition: transform 0.3s;
+}
+
+#results:hover {
+    transform: scale(1.02);
 }
 
 #charts {
