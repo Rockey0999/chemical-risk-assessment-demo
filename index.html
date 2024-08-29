@@ -9,36 +9,38 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <header>
-        <h1 class="animate__animated animate__fadeIn">Chemical Risk Assessment</h1>
-        <p class="animate__animated animate__fadeIn animate__delay-1s">Evaluate the risk of chemicals based on their properties and your exposure parameters.</p>
+    <header class="animate__animated animate__fadeIn">
+        <h1>Chemical Risk Assessment</h1>
+        <p>Evaluate the risk of chemicals based on their properties and your exposure parameters.</p>
     </header>
     
     <main>
-        <section class="animate__animated animate__fadeIn animate__delay-2s">
+        <section class="animate__animated animate__fadeIn animate__delay-1s">
             <label for="chemical">Select Chemical:</label>
             <select id="chemical">
                 <option value="">--Select Chemical--</option>
             </select>
         </section>
         
-        <section id="parameters-section" class="animate__animated animate__fadeIn animate__delay-3s">
+        <section id="parameters-section" class="animate__animated animate__fadeIn animate__delay-2s">
             <!-- Parameter inputs will be dynamically added here -->
         </section>
         
-        <section id="structure-properties" class="animate__animated animate__fadeIn animate__delay-4s">
+        <section id="structure-properties" class="animate__animated animate__fadeIn animate__delay-3s">
             <!-- Chemical properties will be displayed here -->
         </section>
 
-        <section id="charts" class="animate__animated animate__fadeIn animate__delay-5s">
-            <canvas id="riskChart" width="400" height="200"></canvas>
+        <section id="charts" class="animate__animated animate__fadeIn animate__delay-4s">
+            <div class="chart-container">
+                <canvas id="riskChart"></canvas>
+            </div>
         </section>
         
-        <section class="animate__animated animate__fadeIn animate__delay-6s">
+        <section class="animate__animated animate__fadeIn animate__delay-5s">
             <button onclick="calculateRisk()">Calculate Risk</button>
         </section>
         
-        <section id="results" class="animate__animated animate__fadeIn animate__delay-7s">
+        <section id="results" class="animate__animated animate__fadeIn animate__delay-6s">
             <!-- Results will be displayed here -->
         </section>
     </main>
