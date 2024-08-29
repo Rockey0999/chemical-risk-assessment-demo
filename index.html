@@ -3,73 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chemical Risk Assessment - National Science Expo</title>
+    <title>Chemical Risk Assessment</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Chemical Risk Assessment for Individuals</h1>
-        <p>Under the Topic: Mathematical Modeling and Computational Thinking</p>
+        <h1>Chemical Risk Assessment</h1>
     </header>
-    
-    <section id="introduction">
-        <h2>Introduction</h2>
-        <p>An overview of the project and its significance in assessing chemical risks using mathematical models.</p>
-    </section>
-    
-    <section id="modeling">
-        <h2>Mathematical Modeling</h2>
-        <p>Explanation of the formulas used, how they are derived, and their significance in risk assessment.</p>
-    </section>
-    
-    <section id="simulation">
-        <h2>Interactive Simulation</h2>
-        <div id="simulator">
-            <h3>Input Parameters</h3>
-            <label for="substance-concentration">Substance Concentration (c):</label>
-            <input type="number" id="substance-concentration" name="substance-concentration" value="100">
+    <main>
+        <section>
+            <h2>Interactive Chemical Risk Calculator</h2>
+            <form id="chemical-form">
+                <label for="chemical">Select Chemical:</label>
+                <select id="chemical" name="chemical">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                
+                <div id="parameters-section">
+                    <!-- Parameter inputs will be populated based on selected chemical -->
+                </div>
+                
+                <button type="button" onclick="calculateRisk()">Calculate Risk</button>
+            </form>
             
-            <label for="exposure">Exposure (e):</label>
-            <input type="number" id="exposure" name="exposure" value="5">
-            
-            <label for="body-mass">Body Mass (kg):</label>
-            <input type="number" id="body-mass" name="body-mass" value="70">
-            
-            <label for="bmr">Basal Metabolic Rate (BMR):</label>
-            <input type="number" id="bmr" name="bmr" value="900">
-            
-            <label for="time-exposed">Time Exposed (hours):</label>
-            <input type="number" id="time-exposed" name="time-exposed" value="24">
-            
-            <button onclick="calculateRisk()">Calculate Risk</button>
-        </div>
-
-        <div id="results">
-            <h3>Results</h3>
-            <p><strong>QSAR Prediction:</strong> <span id="qsar-prediction">--</span></p>
-            <p><strong>Live Data Calculation:</strong> <span id="live-data-calculation">--</span></p>
-            <p><strong>Difference:</strong> <span id="difference">--</span></p>
-        </div>
-    </section>
-    
-    <section id="data">
-        <h2>Data and Results</h2>
-        <table id="results-table">
-            <tr>
-                <th>Substance Name</th>
-                <th>LD50 Value (mg/kg)</th>
-                <th>QSAR Model Risk Level</th>
-                <th>Experimental Risk Level</th>
-                <th>Difference</th>
-            </tr>
-            <!-- Data rows will go here -->
-        </table>
-    </section>
-    
-    <footer>
-        <p>© 2024 National Science Expo Project by [Your Name]</p>
-    </footer>
-    
+            <h2>Results</h2>
+            <div id="results">
+                <!-- Results will be displayed here -->
+            </div>
+        </section>
+        
+        <section>
+            <h2>Chemical Structure and Properties</h2>
+            <div id="structure-properties">
+                <!-- Chemical structure and properties will be displayed here -->
+            </div>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
