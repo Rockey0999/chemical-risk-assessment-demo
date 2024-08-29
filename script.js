@@ -1,69 +1,73 @@
-// Sample chemical data
-const chemicals = {
-    "Caffeine": {
-        name: "Caffeine",
-        LD50: 192,
-        QSAR: 0.05,
-        experimental: 0.04,
-        vf: 1.5,
-        diseases: ["Headache", "Insomnia", "Anxiety"],
-        solutions: ["Limit intake to moderate levels", "Stay hydrated", "Avoid before bedtime"]
-    },
-    // Add more chemicals here
-};
-
 document.addEventListener('DOMContentLoaded', () => {
-    populateChemicalDropdown();
-});
+    const chemicals = {
+        Caffeine: { LD50: 192, qsarRisk: 0.05 },
+        Aspartame: { LD50: 5000, qsarRisk: 0.01 },
+        SodiumBenzoate: { LD50: 4070, qsarRisk: 0.015 },
+        Paracetamol: { LD50: 338, qsarRisk: 0.07 },
+        Nicotine: { LD50: 50, qsarRisk: 0.4 },
+        SodiumNitrite: { LD50: 180, qsarRisk: 0.08 },
+        MSG: { LD50: 15000, qsarRisk: 0.005 },
+        Saccharin: { LD50: 14000, qsarRisk: 0.002 },
+        AcesulfameK: { LD50: 6000, qsarRisk: 0.007 },
+        Cyclamate: { LD50: 12000, qsarRisk: 0.004 },
+        Ibuprofen: { LD50: 636, qsarRisk: 0.06 },
+        Acetaminophen: { LD50: 338, qsarRisk: 0.07 },
+        Ethanol: { LD50: 7060, qsarRisk: 0.02 },
+        Benzene: { LD50: 930, qsarRisk: 0.09 },
+        Formaldehyde: { LD50: 100, qsarRisk: 0.3 },
+        PropyleneGlycol: { LD50: 22000, qsarRisk: 0.002 },
+        Methanol: { LD50: 5628, qsarRisk: 0.04 },
+        Toluene: { LD50: 636, qsarRisk: 0.065 },
+        Chlorpyrifos: { LD50: 82, qsarRisk: 0.35 },
+        Atrazine: { LD50: 672, qsarRisk: 0.065 },
+        Glyphosate: { LD50: 5600, qsarRisk: 0.02 },
+        DDT: { LD50: 113, qsarRisk: 0.28 },
+        LeadAcetate: { LD50: 466, qsarRisk: 0.075 },
+        SodiumFluoride: { LD50: 52, qsarRisk: 0.38 },
+        Thalidomide: { LD50: 300, qsarRisk: 0.09 }
+    };
 
-function populateChemicalDropdown() {
-    const dropdown = document.getElementById('chemical-dropdown');
-    for (const [key, value] of Object.entries(chemicals)) {
+    const chemicalSelect = document.getElementById('chemical');
+    const chemicalTable = document.getElementById('chemicalTable');
+
+    // Populate chemical select options and table
+    Object.keys(chemicals).forEach(chemical => {
+        // Populate select options
         const option = document.createElement('option');
-        option.value = key;
-        option.textContent = value.name;
-        dropdown.appendChild(option);
-    }
-    dropdown.addEventListener('change', updateChemicalProperties);
-}
+        option.value = chemical;
+        option.textContent = chemical;
+        chemicalSelect.appendChild(option);
 
-function updateChemicalProperties() {
-    const selectedChemical = document.getElementById('chemical-dropdown').value;
-    const properties = chemicals[selectedChemical];
-
-    if (properties) {
-        document.getElementById('chemical-properties').innerHTML = `
-            <p><strong>Name:</strong> ${properties.name}</p>
-            <p><strong>LD50 Value:</strong> ${properties.LD50} mg/kg</p>
-            <p><strong>QSAR Model Risk Prediction:</strong> ${properties.QSAR}</p>
-            <p><strong>Experimental Risk Level:</strong> ${properties.experimental}</p>
-            <p><strong>Risk Level Classification:</strong> ${properties.QSAR > properties.experimental ? 'High' : 'Low'}</p>
+        // Populate table
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${chemical}</td>
+            <td>${chemicals[chemical].LD50}</td>
+            <td>${chemicals[chemical].qsarRisk}</td>
         `;
-    } else {
-        document.getElementById('chemical-properties').innerHTML = '<p>Select a chemical to view its properties.</p>';
-    }
-}
+        chemicalTable.appendChild(row);
+    });
 
-function calculateRisk() {
-    const concentration = parseFloat(document.getElementById('concentration').value);
-    const exposure = parseFloat(document.getElementById('exposure').value);
-    const bodyMass = parseFloat(document.getElementById('body-mass').value);
-    const bmr = parseFloat(document.getElementById('bmr').value);
+    window.calculateRisk = function() {
+        const selectedChemical = document.getElementById('chemical').value;
+        const c = parseFloat(document.getElementById('concentration').value);
+        const e = parseFloat(document.getElementById('exposure').value);
+        const bodyMass = parseFloat(document.getElementById('bodyMass').value);
+        const BMR = 2000; // Given constant
 
-    const selectedChemical = document.getElementById('chemical-dropdown').value;
-    const properties = chemicals[selectedChemical];
+        if (!selectedChemical || !chemicals[selectedChemical]) return;
 
-    if (properties) {
-        const vf = properties.vf;
-        const riskLevel = (concentration * exposure * vf) / (bodyMass * bmr);
-        const riskOutput = `
-            <p><strong>Calculated Risk Level:</strong> ${riskLevel.toExponential(2)}</p>
-        `;
+        const { LD50, qsarRisk } = chemicals[selectedChemical];
+        
+        // Calculate Custom Risk Level
+        const customRisk = (c * e * BMR) / (bodyMass * LD50);
 
-        document.getElementById('risk-output').innerHTML = riskOutput;
-        document.getElementById('diseases').innerHTML = `<p><strong>Potential Diseases:</strong> ${properties.diseases.join(', ')}</p>`;
-        document.getElementById('solutions').innerHTML = `<p><strong>Solutions to Reduce Risk:</strong> ${properties.solutions.join(', ')}</p>`;
-    } else {
-        alert('Please select a chemical from the dropdown.');
-    }
-}
+        // Display results
+        document.getElementById('qsarRisk').textContent = `QSAR Model Risk Level: ${qsarRisk}`;
+        document.getElementById('customRisk').textContent = `Custom Formula Risk Level: ${customRisk}`;
+
+        // Calculate and display comparison
+        const comparison = Math.abs(qsarRisk - customRisk).toFixed(6);
+        document.getElementById('comparison').textContent = `Comparison (Absolute Difference): ${comparison}`;
+    };
+});
