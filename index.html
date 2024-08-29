@@ -3,60 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chemical Risk Assessment Tool</title>
+    <title>Chemical Risk Assessment</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Chemical Risk Assessment Tool</h1>
-        <p>Evaluate the risk levels and classifications of various chemicals.</p>
+        <h1>Chemical Risk Assessment Calculator</h1>
     </header>
 
     <main>
-        <section id="chemical-selection">
-            <h2>Select Chemical</h2>
-            <select id="chemical-dropdown">
-                <option value="">-- Select a chemical --</option>
-                <!-- Options will be dynamically populated -->
-            </select>
-            <div id="chemical-properties">
-                <!-- Chemical properties will be displayed here -->
-            </div>
-        </section>
-
-        <section id="input-parameters">
-            <h2>Enter Parameters</h2>
-            <form id="risk-form">
-                <label for="concentration">Concentration (c):</label>
-                <input type="number" id="concentration" name="concentration" step="any" required>
-
-                <label for="exposure">Exposure (e):</label>
-                <input type="number" id="exposure" name="exposure" step="any" required>
-
-                <label for="body-mass">Body Mass (bw):</label>
-                <input type="number" id="body-mass" name="body-mass" step="any" required>
-
-                <label for="bmr">BMR (kcal/day):</label>
-                <input type="number" id="bmr" name="bmr" step="any" required>
-
+        <section>
+            <h2>Risk Assessment Calculator</h2>
+            <form id="riskForm">
+                <label for="chemical">Select Chemical:</label>
+                <select id="chemical" name="chemical">
+                    <!-- Options will be dynamically filled by JavaScript -->
+                </select>
+                
+                <label for="concentration">Concentration (mg/kg):</label>
+                <input type="number" id="concentration" name="concentration" value="1">
+                
+                <label for="exposure">Exposure (kg/day):</label>
+                <input type="number" id="exposure" name="exposure" value="1">
+                
+                <label for="bodyMass">Body Mass (kg):</label>
+                <input type="number" id="bodyMass" name="bodyMass" value="70">
+                
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" value="30">
+                
                 <button type="button" onclick="calculateRisk()">Calculate Risk</button>
             </form>
         </section>
 
-        <section id="results">
-            <h2>Results</h2>
-            <div id="risk-output">
-                <!-- Risk levels and classifications will be displayed here -->
-            </div>
-            <div id="diseases">
-                <!-- Potential diseases will be listed here -->
-            </div>
-            <div id="solutions">
-                <!-- Solutions to reduce risk will be listed here -->
-            </div>
+        <section>
+            <h2>Risk Levels</h2>
+            <p id="qsarRisk">QSAR Model Risk Level: </p>
+            <p id="customRisk">Custom Formula Risk Level: </p>
+            <p id="comparison">Comparison: </p>
+        </section>
+
+        <section>
+            <h2>Chemical Data</h2>
+            <table id="chemicalTable">
+                <!-- Table will be dynamically filled by JavaScript -->
+            </table>
         </section>
     </main>
 
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+
