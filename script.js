@@ -20,4 +20,3 @@ function calculateRisk() {
     document.getElementById('live-data-calculation').textContent = liveDataCalculation.toFixed(4);
     document.getElementById('difference').textContent = difference.toFixed(4);
 }
-
