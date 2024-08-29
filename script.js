@@ -6,7 +6,6 @@ const chemicals = {
         QSAR: 0.05,
         experimental: 0.04,
         vf: 1.5,
-        assumptions: "c = 1 mg/kg, e = 1 kg/day, BMR = 2000 kcal/day, Body mass = 70 kg",
         diseases: ["Headache", "Insomnia", "Anxiety"],
         solutions: ["Limit intake to moderate levels", "Stay hydrated", "Avoid before bedtime"]
     },
@@ -40,6 +39,8 @@ function updateChemicalProperties() {
             <p><strong>Experimental Risk Level:</strong> ${properties.experimental}</p>
             <p><strong>Risk Level Classification:</strong> ${properties.QSAR > properties.experimental ? 'High' : 'Low'}</p>
         `;
+    } else {
+        document.getElementById('chemical-properties').innerHTML = '<p>Select a chemical to view its properties.</p>';
     }
 }
 
@@ -54,9 +55,6 @@ function calculateRisk() {
 
     if (properties) {
         const vf = properties.vf;
-        const LD50 = properties.LD50;
-
-        // Example calculations
         const riskLevel = (concentration * exposure * vf) / (bodyMass * bmr);
         const riskOutput = `
             <p><strong>Calculated Risk Level:</strong> ${riskLevel.toExponential(2)}</p>
@@ -65,5 +63,7 @@ function calculateRisk() {
         document.getElementById('risk-output').innerHTML = riskOutput;
         document.getElementById('diseases').innerHTML = `<p><strong>Potential Diseases:</strong> ${properties.diseases.join(', ')}</p>`;
         document.getElementById('solutions').innerHTML = `<p><strong>Solutions to Reduce Risk:</strong> ${properties.solutions.join(', ')}</p>`;
+    } else {
+        alert('Please select a chemical from the dropdown.');
     }
 }
