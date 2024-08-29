@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chemical Risk Assessment Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1>Chemical Risk Assessment Calculator</h1>
+    
     <form id="riskForm">
         <label for="chemical">Select Chemical:</label>
         <select id="chemical">
@@ -29,6 +32,7 @@
         <br>
         <button type="button" onclick="calculateRisk()">Calculate Risk</button>
     </form>
+    
     <div>
         <label for="customRiskLevel">Custom Risk Level:</label>
         <span id="customRiskLevel"></span>
@@ -41,6 +45,13 @@
         <label for="riskClassification">Risk Classification:</label>
         <span id="riskClassification"></span>
     </div>
+
+    <!-- Canvas for Charts -->
+    <div>
+        <h2>Chemical Risk Level Comparison</h2>
+        <canvas id="riskComparisonChart"></canvas>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
