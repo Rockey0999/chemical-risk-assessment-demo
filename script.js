@@ -89,3 +89,4 @@ function calculateRisk() {
         <p><strong>Calculated Risk Level:</strong> ${riskLevel.toFixed(6)}</p>
     `;
 }
+
