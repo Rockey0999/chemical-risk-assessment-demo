@@ -10,35 +10,35 @@
 </head>
 <body>
     <header>
-        <h1>Chemical Risk Assessment</h1>
-        <p>Evaluate the risk of chemicals based on their properties and your exposure parameters.</p>
+        <h1 class="animate__animated animate__fadeIn">Chemical Risk Assessment</h1>
+        <p class="animate__animated animate__fadeIn animate__delay-1s">Evaluate the risk of chemicals based on their properties and your exposure parameters.</p>
     </header>
     
     <main>
-        <section>
+        <section class="animate__animated animate__fadeIn animate__delay-2s">
             <label for="chemical">Select Chemical:</label>
             <select id="chemical">
                 <option value="">--Select Chemical--</option>
             </select>
         </section>
         
-        <section id="parameters-section">
+        <section id="parameters-section" class="animate__animated animate__fadeIn animate__delay-3s">
             <!-- Parameter inputs will be dynamically added here -->
         </section>
         
-        <section id="structure-properties">
+        <section id="structure-properties" class="animate__animated animate__fadeIn animate__delay-4s">
             <!-- Chemical properties will be displayed here -->
         </section>
 
-        <section id="charts">
+        <section id="charts" class="animate__animated animate__fadeIn animate__delay-5s">
             <canvas id="riskChart" width="400" height="200"></canvas>
         </section>
         
-        <section>
+        <section class="animate__animated animate__fadeIn animate__delay-6s">
             <button onclick="calculateRisk()">Calculate Risk</button>
         </section>
         
-        <section id="results">
+        <section id="results" class="animate__animated animate__fadeIn animate__delay-7s">
             <!-- Results will be displayed here -->
         </section>
     </main>
