@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Risk Assessment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Chemical Risk Assessment</h1>
+        <nav>
+            <ul>
+                <li><a href="#data">Data Visualization</a></li>
+                <li><a href="#calculator">Risk Calculation Tool</a></li>
+                <li><a href="#comparison">Comparison</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="data">
+        <h2>Data Visualization</h2>
+        <table id="data-table"></table>
+        <canvas id="risk-chart"></canvas>
+    </section>
+
+    <section id="calculator">
+        <h2>Risk Calculation Tool</h2>
+        <form id="risk-form">
+            <label for="chemical">Select Chemical:</label>
+            <select id="chemical"></select>
+            <label for="concentration">Concentration (c):</label>
+            <input type="number" id="concentration" step="any">
+            <label for="exposure">Exposure (e):</label>
+            <input type="number" id="exposure" step="any">
+            <label for="bmr">BMR (kcal/day):</label>
+            <input type="number" id="bmr" value="2000">
+            <button type="button" onclick="calculateRisk()">Calculate Risk</button>
+        </form>
+        <div id="risk-result"></div>
+    </section>
+
+    <section id="comparison">
+        <h2>Comparison of Risk Levels</h2>
+        <canvas id="comparison-chart"></canvas>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
