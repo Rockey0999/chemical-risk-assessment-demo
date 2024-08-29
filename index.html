@@ -9,36 +9,34 @@
 <body>
     <header>
         <h1>Chemical Risk Assessment</h1>
+        <p>Evaluate the risk of chemicals based on their properties and your exposure parameters.</p>
     </header>
+    
     <main>
         <section>
-            <h2>Interactive Chemical Risk Calculator</h2>
-            <form id="chemical-form">
-                <label for="chemical">Select Chemical:</label>
-                <select id="chemical" name="chemical">
-                    <!-- Options will be populated by JavaScript -->
-                </select>
-                
-                <div id="parameters-section">
-                    <!-- Parameter inputs will be populated based on selected chemical -->
-                </div>
-                
-                <button type="button" onclick="calculateRisk()">Calculate Risk</button>
-            </form>
-            
-            <h2>Results</h2>
-            <div id="results">
-                <!-- Results will be displayed here -->
-            </div>
+            <label for="chemical">Select Chemical:</label>
+            <select id="chemical">
+                <option value="">--Select Chemical--</option>
+            </select>
+        </section>
+        
+        <section id="parameters-section">
+            <!-- Parameter inputs will be dynamically added here -->
+        </section>
+        
+        <section id="structure-properties">
+            <!-- Chemical properties will be displayed here -->
         </section>
         
         <section>
-            <h2>Chemical Structure and Properties</h2>
-            <div id="structure-properties">
-                <!-- Chemical structure and properties will be displayed here -->
-            </div>
+            <button onclick="calculateRisk()">Calculate Risk</button>
+        </section>
+        
+        <section id="results">
+            <!-- Results will be displayed here -->
         </section>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>
