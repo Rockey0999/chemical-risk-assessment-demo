@@ -3,73 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chemical Risk Assessment - National Science Expo</title>
+    <title>Chemical Risk Assessment Tool</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Chemical Risk Assessment for Individuals</h1>
-        <p>Under the Topic: Mathematical Modeling and Computational Thinking</p>
+        <h1>Chemical Risk Assessment Tool</h1>
+        <p>Evaluate the risk levels and classifications of various chemicals.</p>
     </header>
-    
-    <section id="introduction">
-        <h2>Introduction</h2>
-        <p>An overview of the project and its significance in assessing chemical risks using mathematical models.</p>
-    </section>
-    
-    <section id="modeling">
-        <h2>Mathematical Modeling</h2>
-        <p>Explanation of the formulas used, how they are derived, and their significance in risk assessment.</p>
-    </section>
-    
-    <section id="simulation">
-        <h2>Interactive Simulation</h2>
-        <div id="simulator">
-            <h3>Input Parameters</h3>
-            <label for="substance-concentration">Substance Concentration (c):</label>
-            <input type="number" id="substance-concentration" name="substance-concentration" value="100">
-            
-            <label for="exposure">Exposure (e):</label>
-            <input type="number" id="exposure" name="exposure" value="5">
-            
-            <label for="body-mass">Body Mass (kg):</label>
-            <input type="number" id="body-mass" name="body-mass" value="70">
-            
-            <label for="bmr">Basal Metabolic Rate (BMR):</label>
-            <input type="number" id="bmr" name="bmr" value="900">
-            
-            <label for="time-exposed">Time Exposed (hours):</label>
-            <input type="number" id="time-exposed" name="time-exposed" value="24">
-            
-            <button onclick="calculateRisk()">Calculate Risk</button>
-        </div>
 
-        <div id="results">
-            <h3>Results</h3>
-            <p><strong>QSAR Prediction:</strong> <span id="qsar-prediction">--</span></p>
-            <p><strong>Live Data Calculation:</strong> <span id="live-data-calculation">--</span></p>
-            <p><strong>Difference:</strong> <span id="difference">--</span></p>
-        </div>
-    </section>
-    
-    <section id="data">
-        <h2>Data and Results</h2>
-        <table id="results-table">
-            <tr>
-                <th>Substance Name</th>
-                <th>LD50 Value (mg/kg)</th>
-                <th>QSAR Model Risk Level</th>
-                <th>Experimental Risk Level</th>
-                <th>Difference</th>
-            </tr>
-            <!-- Data rows will go here -->
-        </table>
-    </section>
-    
-    <footer>
-        <p>© 2024 National Science Expo Project by [Your Name]</p>
-    </footer>
-    
-    <script src="script.js"></script>
+    <main>
+        <section id="chemical-selection">
+            <h2>Select Chemical</h2>
+            <select id="chemical-dropdown">
+                <!-- Options will be dynamically populated -->
+            </select>
+            <div id="chemical-properties">
+                <!-- Chemical properties will be displayed here -->
+            </div>
+        </section>
+
+        <section id="input-parameters">
+            <h2>Enter Parameters</h2>
+            <form id="risk-form">
+                <label for="concentration">Concentration (c):</label>
+                <input type="number" id="concentration" name="concentration" step="any" required>
+
+                <label for="exposure">Exposure (e):</label>
+                <input type="number" id="exposure" name="exposure" step="any" required>
+
+                <label for="body-mass">Body Mass (bw):</label>
+                <input type="number" id="body-mass" name="body-mass" step="any" required>
+
+                <label for="bmr">BMR (kcal/day):</label>
+                <input type="number" id="bmr" name="bmr" step="any" required>
+
+                <button type="button" onclick="calculateRisk()">Calculate Risk</button>
+            </form>
+        </section>
+
+        <section id="results">
+            <h2>Results</h2>
+            <div id="risk-output">
+                <!-- Risk levels and classifications will be displayed here -->
+            </div>
+            <div id="diseases">
+                <!-- Potential diseases will be listed here -->
+            </div>
+            <div id="solutions">
+                <!-- Solutions to reduce risk will be listed here -->
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
