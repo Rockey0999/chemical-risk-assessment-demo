@@ -63,3 +63,17 @@ h3 {
     padding: 1rem;
     border-radius: 4px;
 }
+
+#charts {
+    margin-top: 1rem;
+}
+
+.chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.animate__animated.animate__fadeIn {
+    animation-duration: 2s;
+}
