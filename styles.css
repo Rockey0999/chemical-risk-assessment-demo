@@ -7,62 +7,42 @@ body {
 
 header {
     background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+    color: white;
+    padding: 1rem;
     text-align: center;
 }
 
 main {
-    padding: 20px;
+    padding: 1rem;
 }
 
-form {
-    margin-bottom: 20px;
+h1, h2 {
+    color: #333;
 }
 
-label {
-    display: block;
-    margin: 10px 0 5px;
+#chemical-selection, #chemical-details, #risk-calculator, #risk-results {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input, select, button {
-    display: block;
-    margin: 5px 0;
-    padding: 10px;
-    width: 100%;
-    max-width: 300px;
+#chemical-details img {
+    max-width: 100%;
+    height: auto;
 }
 
 button {
-    background-color: #28a745;
-    color: #fff;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 
-section {
-    margin-bottom: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #f4f4f4;
-}
