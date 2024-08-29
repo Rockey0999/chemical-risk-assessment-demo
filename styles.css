@@ -10,6 +10,15 @@ header {
     color: white;
     padding: 1rem;
     text-align: center;
+    position: relative;
+}
+
+header h1 {
+    animation: fadeIn 2s ease-in-out;
+}
+
+header p {
+    animation: fadeIn 2s ease-in-out 1s;
 }
 
 main {
@@ -76,4 +85,9 @@ h3 {
 
 .animate__animated.animate__fadeIn {
     animation-duration: 2s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
